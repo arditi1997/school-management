@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Update student</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #333;
+		text-decoration: none;
+	}
+
+	li {
+		float: left;
+	}
+
+	li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+
+	/* Change the link color to #111 (black) on hover */
+	li a:hover {
+		background-color: #cc0000;
+		text-decoration: none;
+		color: white;
+	}
+</style>
+
+<body
+	style="background-image: url(https://opticalcortex.com/app/uploads/2014/08/grad-670x376.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+
+	<div class="container-fluid" style="margin-top: 30px;">
+
+		<div class="row col-lg-4 col-lg-offset-4"
+			style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" action="#" th:action="@{/editStudent/{userId}}" method="POST">
+				<h3>Student Form</h3>
+				<h5>
+					<a href="/adminHome">Back to home</a>
+				</h5>
+				<div class="form-group">
+					<input type="text" th:value="${studentName}" th:name="name" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="${studentSurname}" th:name="lastName" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentEmail}" th:name="email" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentAddress}" th:name="address" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentBirthdate}" th:name="birthdate" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentGender}" th:name="gender" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentNationality}" th:name="nationality" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="*{studentAddmissionYear}" th:name="addmissionYear"
+						class="form-control" />
+				</div>
+				<div class="form-group">
+					<select id="inputState" class="form-control" name="class" th:value="${studentClass}" >
+						<option th:value="${studentClass}" th:text="${studentClass}">Choose...</option>
+						<option th:each="classes : ${classesList}" th:value="${classes.classId}" th:name="class"
+							th:text="${classes.className} "></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block" th:name="update"
+						th:value="${studentId}">Update
+						Student</button>
+				</div>
+				<span th:utext="${successMessage}"></span>
+				<div class="alert alert-success alert-dismissible col-sm-12"
+					th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<ul th:each="data : ${bindingResult.getAllErrors()}">
+						<li th:text="${data.getObjectName() + ' : ' + data.getDefaultMessage()}"></li>
+					</ul>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

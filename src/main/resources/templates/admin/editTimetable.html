@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Update Teacher</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #333;
+		text-decoration: none;
+	}
+
+	li {
+		float: left;
+	}
+
+	li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+
+	/* Change the link color to #111 (black) on hover */
+	li a:hover {
+		background-color: #cc0000;
+		text-decoration: none;
+		color: white;
+	}
+
+	:root {
+		--text: "Select values";
+	}
+
+	.multiple_select {
+		height: 18px;
+		width: 90%;
+		overflow: hidden;
+		-webkit-appearance: menulist;
+		position: relative;
+	}
+
+	.multiple_select::before {
+		content: var(--text);
+		display: block;
+		margin-left: 5px;
+		margin-bottom: 2px;
+	}
+
+	.multiple_select_active {
+		overflow: visible !important;
+	}
+
+	.multiple_select option {
+		display: none;
+		height: 18px;
+		background-color: white;
+	}
+
+	.multiple_select_active option {
+		display: block;
+	}
+
+	.multiple_select option::before {
+		content: "\2610";
+	}
+
+	.multiple_select option:checked::before {
+		content: "\2611";
+	}
+</style>
+
+<body
+	style="background-image: url(https://opticalcortex.com/app/uploads/2014/08/grad-670x376.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+
+	<div class="container-fluid" style="margin-top: 30px;">
+
+		<div class="row col-lg-4 col-lg-offset-4"
+			style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" action="#" th:action="@{/editTimetable/{id}}" method="POST">
+				<h3>Course Form</h3>
+				<h5>
+					<a href="/adminHome">Back to home</a>
+				</h5>
+				<div class="form-group">
+					<input type="text" th:value="${name}" th:name="name" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="${day}" th:name="day" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="${end}" th:name="end" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:value="${start}" th:name="start" class="form-control" />
+				</div>
+				<div class="form-group">
+					<select id="inputState" class="form-control" name="class" th:value="${classes}">
+						<option th:value="${classes}">Choose...</option>
+						<option th:each="class : ${classesList}" th:value="${class.classId}" th:name="class"
+							th:text="${class.className}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<select id="inputState" class="form-control" name="course" th:value="${course}">
+						<option th:value="${course}">Choose...</option>
+						<option th:each="course : ${courseList}" th:value="${course.courseId}" th:name="course"
+							th:text="${course.courseName}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<select id="inputState" class="form-control" name="teacher" th:value="${teacherTimetable}">
+						<option th:value="${teacherTimetable}">Choose...</option>
+						<option th:each="teachersList : ${teachers}" th:value="${teachersList.userId}" th:name="teacher"
+							th:text="|${teachersList.name} ${teachersList.lastName} |"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block" th:name="update"
+						th:value="${timetableId}">Update
+						Parent</button>
+				</div>
+				<span th:utext="${successMessage}"></span>
+				<div class="alert alert-success alert-dismissible col-sm-12"
+					th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">ù</button>
+					<ul th:each="data : ${bindingResult.getAllErrors()}">
+						<li th:text="${data.getObjectName() + ' : ' + data.getDefaultMessage()}"></li>
+					</ul>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script>$(".multiple_select").mousedown(function (e) {
+			if (e.target.tagName == "OPTION") {
+				return; //don't close dropdown if i select option
+			}
+			$(this).toggleClass('multiple_select_active'); //close dropdown if click inside <select> box
+		});
+		$(".multiple_select").on('blur', function (e) {
+			$(this).removeClass('multiple_select_active'); //close dropdown if click outside <select>
+		});
+
+		$('.multiple_select option').mousedown(function (e) { //no ctrl to select multiple
+			e.preventDefault();
+			$(this).prop('selected', $(this).prop('selected') ? false : true); //set selected options on click
+			$(this).parent().change(); //trigger change event
+		});
+
+
+		$("#myFilter").on('change', function () {
+			var selected = $("#myFilter").val().toString(); //here I get all options and convert to string
+			var document_style = document.documentElement.style;
+			if (selected !== "")
+				document_style.setProperty('--text', "'Selected: " + selected + "'");
+			else
+				document_style.setProperty('--text', "'Select values'");
+		});</script>
+	<script>$(document).ready(function () {
+			$('#ingredients').multiselect();
+		});</script>
+</body>
+
+</html>

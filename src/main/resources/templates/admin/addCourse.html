@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+
+    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <style>
+        :root {
+            --text: "Select values";
+        }
+
+        .multiple_select {
+            height: 18px;
+            width: 90%;
+            overflow: hidden;
+            -webkit-appearance: menulist;
+            position: relative;
+        }
+
+        .multiple_select::before {
+            content: var(--text);
+            display: block;
+            margin-left: 5px;
+            margin-bottom: 2px;
+        }
+
+        .multiple_select_active {
+            overflow: visible !important;
+        }
+
+        .multiple_select option {
+            display: none;
+            height: 18px;
+            background-color: white;
+        }
+
+        .multiple_select_active option {
+            display: block;
+        }
+
+        .multiple_select option::before {
+            content: "\2610";
+        }
+
+        .multiple_select option:checked::before {
+            content: "\2611";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-main-wrapper">
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="index.html">FAKULTETI I TEKNOLOGJISE SE INFORMACIONIT</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
+                                    class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img
+                                                            src="assets/images/avatar-2.jpg" alt=""
+                                                            class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span
+                                                            class="notification-list-user-name">Jeremy
+                                                            Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img
+                                                            src="assets/images/avatar-3.jpg" alt=""
+                                                            class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span
+                                                            class="notification-list-user-name">John Abraham </span>is
+                                                        now following you
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img
+                                                            src="assets/images/avatar-4.jpg" alt=""
+                                                            class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span
+                                                            class="notification-list-user-name">Monaan Pechi</span> is
+                                                        watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img
+                                                            src="assets/images/avatar-5.jpg" alt=""
+                                                            class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span
+                                                            class="notification-list-user-name">Jessica
+                                                            Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                                aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="/logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="/adminHome">Home
+                                </a>
+                                <a class="nav-link active" href="/students">Students
+                                </a>
+                                <a class="nav-link active" href="/courses">Courses
+                                </a>
+                                <a class="nav-link active" href="/teachers">Teachers
+                                </a>
+                                <a class="nav-link active" href="/parents">Parents
+                                </a>
+                                <a class="nav-link active" href="/classes">Classes
+                                </a>
+                                <a class="nav-link active" href="/timeTable">TimeTable
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        </div>
+                    </div>
+                    <div class="ecommerce-widget">
+                        <form action="/addCourse" th:object="${course}" method="post">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Course Name</label>
+                                    <input type="text" class="form-control" name="className" id="coursename"
+                                        th:field="*{courseName}" placeholder="Economy" required=""
+                                        oninvalid="this.setCustomValidity('Please enter name')"
+                                        oninput="setCustomValidity('')">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Course credit</label>
+                                    <input type="text" class="form-control" name="courseCredit" id="CourseCredit"
+                                        th:field="*{courseCredit}" placeholder="5" required=""
+                                        oninvalid="this.setCustomValidity('Please enter credits')"
+                                        oninput="setCustomValidity('')">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Teacher</label>
+                                    <select id="inputState" class="form-control" required="" name="teacherClass"
+                                        th:field="*{user}">
+                                        <option value="">Choose...</option>
+                                        <option th:each="teacher : ${teachersList}" th:value="${teacher.userId}"
+                                            name="teacherClass" placeholder="Choose..."
+                                            th:text="| ${teacher.name} ${teacher.lastName} |"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Classes</label>
+                                    <select id="myFilter" class="multiple_select" name="classes" multiple>
+                                        <option th:each="classes : ${classesList}" th:value="${classes.classId}"
+                                            name="classes" placeholder="Choose..." th:text="${classes.className}">
+                                        </option>
+                                    </select>
+                                </div>
+
+
+
+                            </div><br><br>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                        <span th:utext="${successMessage}"></span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="javascript: void(0);">About</a>
+                            <a href="javascript: void(0);">Support</a>
+                            <a href="javascript: void(0);">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>$(document).ready(function () {
+            $('#ingredients').multiselect();
+        });</script>
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>$(".multiple_select").mousedown(function (e) {
+            if (e.target.tagName == "OPTION") {
+                return; //don't close dropdown if i select option
+            }
+            $(this).toggleClass('multiple_select_active'); //close dropdown if click inside <select> box
+        });
+        $(".multiple_select").on('blur', function (e) {
+            $(this).removeClass('multiple_select_active'); //close dropdown if click outside <select>
+        });
+
+        $('.multiple_select option').mousedown(function (e) { //no ctrl to select multiple
+            e.preventDefault();
+            $(this).prop('selected', $(this).prop('selected') ? false : true); //set selected options on click
+            $(this).parent().change(); //trigger change event
+        });
+
+
+        $("#myFilter").on('change', function () {
+            var selected = $("#myFilter").val().toString(); //here I get all options and convert to string
+            var document_style = document.documentElement.style;
+            if (selected !== "")
+                document_style.setProperty('--text', "'Selected: " + selected + "'");
+            else
+                document_style.setProperty('--text', "'Select values'");
+        });</script>
+</body>
+
+</html>
